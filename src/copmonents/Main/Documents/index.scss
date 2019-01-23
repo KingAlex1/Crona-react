@@ -1,0 +1,23 @@
+.documents__name {
+  padding-bottom: 16px;
+  color: #868686;
+  cursor: pointer;
+  &:hover {
+    color: #343434;
+  }
+  transition: all 0.5s linear;
+}
+
+.documents-desc {
+  display: none;
+  max-height: 280px;
+  overflow-y: scroll;
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-style: italic;
+
+}
+
+.active_desc {
+  display: block;
+}

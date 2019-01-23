@@ -1,0 +1,27 @@
+.check-docs{
+  display: block;
+}
+
+.check-docs__list{
+
+}
+
+.check-docs__item{
+
+}
+
+.check-docs__link{
+  line-height: 30px;
+  text-decoration: none;
+  color: #868686;
+  &:hover {
+    color: #343434;
+  }
+  transition: all 0.5s linear;
+}
+
+.main-blog-title{
+  padding-bottom: 10px;
+  color: #343434;
+  font-size: 19px;
+}

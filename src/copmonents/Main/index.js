@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './index.scss'
 
 import Header from './Header'
 import MainContent from './MainContent'
@@ -11,13 +12,12 @@ export class Main extends Component {
         return (
             <div className='wrapper'>
                 <div className='main-content'>
-                    <div className='content'>
-                        <Header/>
-                        <MainContent/>
-                        <Footer/>
-                    </div>
+                    <Header/>
+                    <MainContent/>
                 </div>
+                <Footer/>
             </div>
+
         )
     }
 }

@@ -1,0 +1,59 @@
+.header {
+  //border-bottom-style: solid;
+  //border-bottom-width: 1px;
+  //border-bottom-color: grey;
+  background-color: rgb(255,255,255);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+
+
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.title {
+
+  color: #3ec6ff;
+}
+
+.title__name {
+  font-weight: 500;
+  font-size: 20px;
+  color: #3ec6ff;
+
+}
+
+.title__description {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nav-bar {
+
+}
+
+.nav-bar__list {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar__item {
+
+}
+
+.nav-bar__link {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #343434;
+  &:hover {
+    background-color: #3ec6ff;
+    color: white;
+  }
+  text-transform: uppercase;
+}
