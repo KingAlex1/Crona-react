@@ -1,10 +1,5 @@
 import React, {Component} from 'react'
-import {
-    Link,
-    Route,
-    Switch,
-    Redirect
-} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import ModalButton from '../ModalButton'
 
 import './index.scss'
@@ -37,10 +32,10 @@ export class Header extends Component {
                                         to='/about'>
                                         О нас</Link></li>
                                 <li className='nav-bar__item'>
-                                        <ModalButton />
+                                    <ModalButton/>
                                     {/*<Link*/}
-                                        {/*className='nav-bar__link'*/}
-                                        {/*to='/contacts'>Контакты</Link>*/}
+                                    {/*className='nav-bar__link'*/}
+                                    {/*to='/contacts'>Контакты</Link>*/}
                                 </li>
                             </ul>
 

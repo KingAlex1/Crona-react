@@ -1,21 +1,28 @@
 .check-docs{
   display: block;
+  width: 100%
 }
 
 .check-docs__list{
-
+  display: block;
 }
 
 .check-docs__item{
-
+  display: block;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(230, 230, 230);;
+  border-bottom-width: 1px;
 }
 
 .check-docs__link{
+  display: block;
+  padding: 10px 0;
   line-height: 30px;
   text-decoration: none;
   color: #868686;
   &:hover {
     color: #343434;
+    background-color: #3ec6ff;
   }
   transition: all 0.5s linear;
 }

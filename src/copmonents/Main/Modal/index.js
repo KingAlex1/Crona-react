@@ -4,16 +4,24 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 
 export class Modal extends Component {
+
+    handlePreventClick = (e) =>{
+        e.stopPropagation()
+    }
+
     render () {
+
+
 
         const {children, onClose} = this.props;
 
         return ReactDOM.createPortal(
             <div className='contacts'>
-                <div className='modal__backlay'>
-                    <div className='modal__main'>
+                <div className='modal__background' onClick={onClose}>
+                    <div className='modal__main' onClick={this.handlePreventClick}>
                         {children}
-                        <button onClick={onClose}>X</button>
+
+                        <div className='close' onClick={onClose}></div>
                     </div>
                 </div>
             </div>,

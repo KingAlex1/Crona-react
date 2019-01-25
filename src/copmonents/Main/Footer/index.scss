@@ -2,12 +2,19 @@
   background: rgb(246,246,246);
   text-align: center;
   height: 72px;
-  margin-top: -72px;
+  margin-top: -87px;
   position: relative;
   min-width: 960px;
+margin-bottom: 15px;
 }
 
 .footer__bottom-text {
   line-height: 28px;
 
+}
+
+.footer__container{
+  text-align: left;
+  display: flex;
+  flex-direction: row;
 }

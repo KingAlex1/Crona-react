@@ -1,9 +1,10 @@
 .documents__name {
-  padding-bottom: 16px;
+  padding: 10px 0;
   color: #868686;
   cursor: pointer;
   &:hover {
     color: #343434;
+    background-color: #3ec6ff;
   }
   transition: all 0.5s linear;
 }
@@ -20,4 +21,10 @@
 
 .active_desc {
   display: block;
+}
+
+.documents__item {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(230, 230, 230);;
+  border-bottom-width: 1px;
 }
