@@ -18,14 +18,8 @@ import './index.scss'
 
 export class MainContent extends Component {
 
-
-    handleClick = () => {
-        const blog = document.querySelector('.content__info')
-
-
-    }
-
     render() {
+
         return (
             <div className='main'>
                 <div className='main-wrapper'>
@@ -37,14 +31,14 @@ export class MainContent extends Component {
                                         <Link
                                             className='side-bar__link'
                                             to='/get_docs'
-                                            onClick={this.handleClick}>Отправить
+                                        >Отправить
                                             заявку</Link>
                                     </li>
                                     <li className='side-bar__item'>
                                         <Link
                                             className='side-bar__link'
                                             to='/check_docs'
-                                            onClick={this.handleClick}
+
                                         >Проверить
                                             подлинность</Link>
                                     </li>
@@ -52,21 +46,22 @@ export class MainContent extends Component {
                                         <Link
                                             className='side-bar__link'
                                             to='/download_docs'
-                                            onClick={this.handleClick}>Бланки
+                                        >Бланки
                                             заявок</Link>
                                     </li>
                                     <li className='side-bar__item'>
                                         <Link
                                             className='side-bar__link'
                                             to='/documents'
-                                            onClick={this.handleClick}>Тех.
+                                        >Тех.
                                             Регламенты</Link>
                                     </li>
                                     <li className='side-bar__item'>
                                         <Link
                                             className='side-bar__link'
                                             to='/offers'
-                                            onClick={this.handleClick}>Задать вопрос</Link>
+                                        >Задать
+                                            вопрос</Link>
                                     </li>
                                 </ul>
                             </aside>
@@ -90,14 +85,19 @@ export class MainContent extends Component {
                                         component={DownloadDocs}/>
                                     <Route path='/documents'
                                            component={Documents}/>
-                                    <Route path='/offers' component={Post}/>
+                                    <Route path='/offers'
+                                           component={Post}/>
                                     <Redirect from='*'
                                               to="/"/>
                                 </Switch>
+
                             </div>
+
                         </div>
                     </div>
+
                 </div>
+
             </div>
         )
     }

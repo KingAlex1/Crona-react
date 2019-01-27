@@ -1,37 +1,24 @@
 import React, {Component} from 'react'
-import Modal from '../Modal'
+import ReactDOM from 'react-dom'
 
 import './index.scss'
 
-export class ModalButton extends Component {
+export class Modal extends Component {
 
-    state = {
-        isModalShow: false
+    handlePreventClick = (e) =>{
+        e.stopPropagation()
     }
 
-    hideModal = (e) => {
+    render () {
 
-        this.setState({
-            isModalShow: false
-        })
-        e.stopPropagation();
-    }
 
-    showModal = () => {
-        this.setState({isModalShow: true})
-    }
 
-    render() {
-        const {isModalShow} = this.state;
+        const { onClose} = this.props;
 
-        return (
-            <div>
-                <a className='nav-bar__link nav-bar__link-modal'
-                   onClick={this.showModal}> Контакты
-                </a>
-                {isModalShow && (
-                    <Modal onClose={this.hideModal}>
-
+        return ReactDOM.createPortal(
+            <div className='contacts'>
+                <div className='modal__background' onClick={onClose}>
+                    <div className='modal__main' onClick={this.handlePreventClick}>
                         <div className='contacts__blog'>
                             <div
                                 className='contacts__title'>Контакты
@@ -91,13 +78,13 @@ export class ModalButton extends Component {
                                 </button>
                             </form>
                         </div>
-
-
-                    </Modal>
-                )}
-            </div>
+                        <div className='close' onClick={onClose}></div>
+                    </div>
+                </div>
+            </div>,
+            document.querySelector('#portal')
         )
     }
 }
 
-export default ModalButton
+export default Modal

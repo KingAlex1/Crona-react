@@ -13,7 +13,7 @@ export class PersonalForm extends Component {
     }
 
     render() {
-        const {title} = this.props
+        const {title, disabled, onNextForm} = this.props
         return (
             <div>
                 <Title>{title}</Title>
@@ -56,6 +56,13 @@ export class PersonalForm extends Component {
                                 type="email"
                                 onChange={this.handleChangeForm}/>
                         </div>
+                        <button type='submit'
+                                className='button-next btn btn-primary'
+                                disabled={disabled}
+                                onClick={onNextForm}
+                        >
+                            Дальше
+                        </button>
                     </form>
                 </div>
 

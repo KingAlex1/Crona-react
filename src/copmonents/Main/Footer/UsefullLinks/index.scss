@@ -1,15 +1,24 @@
-.footer__title{
+
+
+.footer__title {
+  font-size: 16px;
+  color: #343434;
+}
+
+.footer__list-left {
+  margin-top: 20px;
+  //width: 172px;
+}
+
+.footer__item-left {
 
 }
 
-
-
-.footer__item-left{
-
-}
-
-.footer__link-left{
-  line-height: 34px;
+.footer__link-left {
+  line-height: 30px;
   text-decoration: none;
   color: #868686;
+  padding-right: 28px;
+  //margin-right: 72px;
+
 }

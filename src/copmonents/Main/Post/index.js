@@ -177,6 +177,8 @@ export class Post extends Component {
                         lastName={state.lastName}
                         email={state.email}
                         onChangeForm={this.handleChangeForm}
+                        disabled={!this.isFormCommitable() ? 'disabled' : null}
+                        onNextForm={this.handleClickNextForm}
                     />
                 )
                 break
@@ -186,7 +188,8 @@ export class Post extends Component {
                         title={this.stepTitles.second}
                         curdNumber={state.cardNumber}
                         onChangeForm={this.handleChangeForm}
-
+                        disabled={!this.isFormCommitable() ? 'disabled' : null}
+                        onNextForm={this.handleClickNextForm}
                     />
                 )
                 break
@@ -208,16 +211,6 @@ export class Post extends Component {
                 {this.renderDesk()}
                 <div className='form-container'>
                     {this.renderForm()}
-                </div>
-                <div className='button-panel'>
-                    <button
-                        type="submit"
-
-                        className='button-next btn btn-primary'
-                        disabled={!this.isFormCommitable() ? 'disabled' : null}
-                        onClick={this.handleClickNextForm}
-                    > Дальше
-                    </button>
                 </div>
 
             </div>

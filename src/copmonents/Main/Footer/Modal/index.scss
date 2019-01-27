@@ -1,6 +1,6 @@
-.contacts{
-  position: absolute;
-  top: 0;
+.footer_privacy {
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -9,10 +9,8 @@
   z-index: 3;
 }
 
-.modal__background{
-  background-color: rgba(0,0,0,.1);
-  width: 100%;
-  height: 100%;
+.modal__background {
+  background-color: rgba(0, 0, 0, .1);
   top: 0;
   left: 0;
   position: absolute;
@@ -21,14 +19,14 @@
   justify-content: center;
 }
 
-.modal__main{
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(150, 150, 150, 0.9) 100%), url("../../../image/gum-2768178_1920.jpg");
-  background-position-x: center ;
+.modal__main-footer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(150, 150, 150, 0.9) 100%), url("../../../../image/moscow-1029511_1920.jpg");
+  //background-color: #f6f6f6;
+  background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 900px;
   height: 420px;
-  background-color: white;
 
   position: relative;
   display: flex;
@@ -36,6 +34,7 @@
   //filter: grayscale(1);
 
 }
+
 //linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(150, 150, 150, 1) 100%),
 
 .close {
@@ -57,9 +56,31 @@
   background-color: #000000;
 
 }
+
 .close:before {
   transform: rotate(45deg);
 }
+
 .close:after {
   transform: rotate(-45deg);
+
+}
+
+.privacy__info{
+  padding: 14px 20px 14px 26px;
+  width: 80%;
+}
+
+.privacy__title {
+ color: #343434;
+  font-size: 24px;
+  padding: 8px 0;
+  font-weight: 600;
+}
+.privacy__desc{
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  color: #343434;
+  padding: 8px 0;
 }

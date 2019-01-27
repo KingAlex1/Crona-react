@@ -1,40 +1,48 @@
 .about {
   display: flex;
+  flex-direction: column;
+
+}
+
+.about-top {
+  display: flex;
   flex-direction: row;
   flex: 1;
   position: relative;
+
 }
 
-.about__right{
+.about__right {
   display: flex;
   flex-direction: column;
-  width: 520px;
+  width: 560px;
   padding-right: 80px;
 }
 
-.about__left{
+.about__left {
   display: flex;
   flex-direction: column;
 
 }
-.about__img{
+
+.about__img {
   margin-top: -14px;
   position: absolute;
   width: 100%;
-  height: calc(100% + 28px);
+  height: 100%;
   background-image: url("../../../image/1.jpg");
   background-size: cover;
 }
 
-.about__list{
+.about__list {
 
 }
 
-.about__item{
+.about__item {
 
 }
 
-.about__name{
+.about__name {
   padding: 10px 0;
   color: #868686;
   cursor: pointer;
@@ -45,7 +53,8 @@
   transition: all 0.5s linear;
 }
 
-.about__desc{
+.about__desc {
+  height: 52px;
   overflow-y: hidden;
   display: none;
   max-height: 280px;
@@ -54,3 +63,83 @@
   font-size: 12px;
   font-style: italic;
 }
+
+.about-bottom {
+  margin-top: 30px;
+}
+
+.guarantees {
+  display: flex;
+  margin: 20px 0;
+}
+
+.guarantees-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.guarantee-item {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: calc(818px/3);
+}
+
+.guarantee-item__pic {
+  min-width: 50px;
+  max-height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px 20px 20px 0;
+}
+
+.guarantee-item__desc {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.guarantee-item__title {
+  font-size: 18px;
+  color: #3ec6ff;
+  font-weight: 500;
+  padding: 10px 0;
+}
+
+.guarantee-item__info {
+
+}
+
+.item-pic_1 {
+  background-image: url("../../../image/tasks_ok_apply_1843.png");
+}
+
+.item-pic_2 {
+  background-image: url("../../../image/librarydocuments_documents_2031.png");
+}
+
+.item-pic_3 {
+  background-image: url("../../../image/taskmanager_taskmanager_administradordetarea_1824.png");
+}
+
+.item-pic_4 {
+  background-image: url("../../../image/magnifyingglass_1969.png");
+}
+
+.item-pic_5 {
+  background-image: url("../../../image/network_2045.png");
+}
+
+.item-pic_6 {
+  background-image: url("../../../image/directmail__1996.png");
+}
+
+.item-pic_7 {
+  background-image: url("../../../image/system_1905.png");
+}
+
+.item-pic_8 {
+  background-image: url("../../../image/taskmanager_task_1914.png");
+}
+

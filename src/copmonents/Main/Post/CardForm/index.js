@@ -23,7 +23,7 @@ export class CardForm extends Component {
 
 
     render() {
-        const {title} = this.props
+        const {title, disabled, onNextForm} = this.props
 
         return (
             <div className='card-form'>
@@ -31,7 +31,7 @@ export class CardForm extends Component {
                 <form action="">
                     <div className='form-group'>
                         <label
-                            htmlFor="question">Вопрос</label>
+                            htmlFor="question"></label>
 
                         <textarea
                             id='question'
@@ -40,9 +40,17 @@ export class CardForm extends Component {
                             name='cardNumber'
                             value={this.props.cardNumber}
                             onChange={this.handleChangeForm}
-                            row="4"
+                            rows='6'
                         />
+
                     </div>
+                    <button type='submit'
+                            className='button-next btn btn-primary'
+                            disabled={disabled}
+                            onClick={onNextForm}
+                    >
+                        Дальше
+                    </button>
                 </form>
             </div>
         )
