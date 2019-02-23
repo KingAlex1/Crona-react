@@ -1,0 +1,41 @@
+
+.side-bar {
+  display: flex;
+  margin-right: 15px;
+}
+
+.side-bar-extra {
+  width: 100%;
+}
+
+.side-bar__list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+
+  background-color: rgb(246, 246, 246);
+
+}
+
+.side-bar__item {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(230, 230, 230);;
+  border-bottom-width: 1px;
+}
+
+.side-bar__link {
+  padding: 10px 20px 10px 12px;
+  display: block;
+  text-decoration: none;
+  color: #868686;
+  &:hover {
+    background-color: #3ec6ff;
+    color: white;
+  }
+
+}
+.selected{
+  color: white;
+  background-color: #bdbdbd ;
+
+}

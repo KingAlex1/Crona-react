@@ -11,8 +11,6 @@ export class Modal extends Component {
 
     render () {
 
-
-
         const { onClose} = this.props;
 
         return ReactDOM.createPortal(

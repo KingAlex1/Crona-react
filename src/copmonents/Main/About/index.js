@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+
 import './index.scss'
 
 export class About extends Component {
@@ -262,6 +263,7 @@ export class About extends Component {
 
 
                     </ul>
+
 
                 </div>
 

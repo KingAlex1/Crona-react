@@ -20,9 +20,9 @@
 }
 
 .modal__main-footer {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(150, 150, 150, 0.9) 100%), url("../../../../image/moscow-1029511_1920.jpg");
+  background: url("./image/image-from-rawpixel-id-427667-jpeg.jpg");
   //background-color: #f6f6f6;
-  background-position-x: center;
+  background-position-y: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 900px;
@@ -31,7 +31,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  //filter: grayscale(1);
+
 
 }
 
@@ -81,6 +81,6 @@
   font-weight: 600;
   font-size: 17px;
   line-height: 24px;
-  color: #343434;
+  color:   #868686;
   padding: 8px 0;
 }

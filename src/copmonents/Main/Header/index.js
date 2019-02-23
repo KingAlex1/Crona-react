@@ -1,11 +1,35 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import ModalButton from './ModalButton'
+import {signOutRequest} from '../../../actions/auth'
 
 import './index.scss'
 
+import {connect} from 'react-redux'
+
 export class Header extends Component {
     render() {
+
+        const {signOutRequest, signedIn} = this.props
+
+        const link = signedIn
+            ? (<NavLink
+                className='nav-bar__link'
+                activeClassName='selected'
+                to="/auth#"
+                onClick={signOutRequest}
+            >
+                Выйти
+            </NavLink>)
+            :
+            (<NavLink
+                className='nav-bar__link'
+                activeClassName='selected'
+                to='/auth'
+            >
+                Авторизация
+            </NavLink>)
+
         return (
             <div className='header'>
                 <div className='container'>
@@ -22,15 +46,22 @@ export class Header extends Component {
                         <nav className='nav-bar'>
                             <ul className='nav-bar__list'>
                                 <li className='nav-bar__item'>
-                                    <Link
+                                    <NavLink
+                                        exact
                                         className='nav-bar__link'
-                                        to='/'>Главная</Link>
+                                        activeClassName='selected'
+                                        to='/'>Главная</NavLink>
                                 </li>
                                 <li className='nav-bar__item'>
-                                    <Link
+                                    <NavLink
                                         className='nav-bar__link'
+                                        activeClassName='selected'
                                         to='/about'>
-                                        О нас</Link></li>
+                                        О нас</NavLink></li>
+
+                                <li className='nav-bar__item'>
+                                    {link}
+                                </li>
                                 <li className='nav-bar__item'>
                                     <ModalButton/>
 
@@ -45,4 +76,7 @@ export class Header extends Component {
     }
 }
 
-export default Header
+export default connect(state => ({
+    signedIn: !!state.auth.user
+}), {signOutRequest}, null, {pure: false})(Header)
+
