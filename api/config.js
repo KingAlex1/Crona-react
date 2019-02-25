@@ -9,8 +9,9 @@ if (!envs[ENV]) {
 
 const PORT = process.env.PORT || config.get('port');
 const MONGO_URI = process.env.MONGO_URI || config.get('mongo.uri');
+const JWT_SECRET = config.get('jwt.secret');
 
 
 module.exports = {
-    PORT, MONGO_URI
+    PORT, MONGO_URI, JWT_SECRET
 }

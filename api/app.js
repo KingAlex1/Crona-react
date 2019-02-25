@@ -7,7 +7,7 @@ const modules = require('./modules')
 connectorsInit()
 const app = express();
 initHandlers(app)
-app.use('/auth/signup', modules)
+app.use(modules)
 
 app.use(function (req, res) {
 
