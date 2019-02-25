@@ -7,6 +7,8 @@ import './index.scss'
 
 export class SingInForm extends Component {
 
+
+
     render() {
 
         const {handleSubmit} = this.props
@@ -17,6 +19,7 @@ export class SingInForm extends Component {
                 >Вход в сервис
                 </div>
                 <form
+                    method="POST"
                     className="sign-in-form"
                     onSubmit={handleSubmit}>
                     <Field

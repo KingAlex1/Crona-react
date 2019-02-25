@@ -1,53 +1,57 @@
-const WebSocket = require('ws')
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 
-const wss = new WebSocket.Server({port: 8080})
+const passport = require('passport');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const cors = require('cors');
+const PORT = 4200;
 
-const users = []
 
-const broadcast = (data, ws) => {
-    wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN && client !== ws) {
-            client.send(JSON.stringify(data))
-        }
-    })
-}
+const app = express();
 
-wss.on('connection', (ws) => {
-    let index
-    ws.on('message', (message) => {
-        const data = JSON.parse(message)
-        console.log(data)
-        switch (data.type) {
-            case 'ADD_USER': {
-                index = users.length
-                users.push({name: data.name, id: index + 1})
-                ws.send(JSON.stringify({
-                    type: 'USERS_LIST',
-                    users
-                }))
-                broadcast({
-                    type: 'USERS_LIST',
-                    users
-                }, ws)
-                break
-            }
-            case 'ADD_MESSAGE':
-                broadcast({
-                    type: 'ADD_MESSAGE',
-                    message: data.payload.message,
-                    author: data.author
-                }, ws)
-                break
-            default:
-                break
-        }
-    })
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://alex5000:mars5000@ds349065.mlab.com:49065/crona');
+require('./models/user')
 
-    ws.on('close', () => {
-        users.splice(index, 1)
-        broadcast({
-            type: 'USERS_LIST',
-            users
-        }, ws)
-    })
-})
+const reg = require('./routes/reg');
+
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(flash());
+
+app.use(session({
+    secret: 'crona',
+    key: 'keys',
+    cookie: {
+        path: '/',
+        httpOnly: true,
+        maxAge: null
+    },
+    saveUninitialized: false,
+    resave: false,
+    store: new MongoStore({mongooseConnection: mongoose.connection})
+}));
+
+require('./config/config-passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/auth/signup', reg);
+
+
+
+
+
+
+app.listen(PORT, function(){
+    console.log('Server is running on Port: ',PORT);
+});

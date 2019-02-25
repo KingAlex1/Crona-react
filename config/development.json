@@ -1,0 +1,6 @@
+{
+  "env": "development",
+  "mongo": {
+    "uri":"mongodb://alex5000:mars5000@ds349065.mlab.com:49065/crona"
+  }
+}

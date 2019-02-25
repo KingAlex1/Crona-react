@@ -4,16 +4,56 @@ import emailValidator from 'email-validator'
 import ErrorField from '../../../common/ErrorField'
 
 import './index.scss'
+import axios from "axios/index";
 
 export class SignUpForm extends Component {
+
+    state = {
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    }
+
+
+    handleSingUp = (e) => {
+        e.preventDefault();
+        const data = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword
+        }
+        axios.post('http://localhost:4200/auth/signup',data)
+    }
+
+    onChangeName = (e) => {
+        this.setState({username: e.target.value})
+    }
+
+    onChangeEmail = (e) => {
+        this.setState({email: e.target.value})
+    }
+
+    onChangePassword = (e) => {
+        this.setState({password: e.target.value})
+    }
+
+    onChangeConfirmPassword = (e) => {
+        this.setState({confirmPassword: e.target.value})
+    }
+
+
     render() {
         const {handleSubmit} = this.props
         return (
             <div className='sign-up'>
-                <div className="main-blog-title">Зарегистрироваться</div>
+                <div
+                    className="main-blog-title">Зарегистрироваться
+                </div>
                 <form
                     className="sign-up-form"
-                    onSubmit={handleSubmit}
+                    onSubmit={this.handleSingUp}
 
                 >
                     <Field
@@ -21,10 +61,11 @@ export class SignUpForm extends Component {
                         className="form-control"
                         divClassName="col-sm-9"
                         type="text"
-                        name="name"
+                        name="username"
                         label="Имя"
                         id="name"
                         component={ErrorField}
+                        onChange={this.onChangeName}
                     />
                     <Field
                         labelClassName="col-sm-3 col-form-label"
@@ -36,6 +77,7 @@ export class SignUpForm extends Component {
                         id="email"
                         placeholder="e-mail"
                         component={ErrorField}
+                        onChange={this.onChangeEmail}
                     />
 
 
@@ -48,6 +90,7 @@ export class SignUpForm extends Component {
                         id="password"
                         component={ErrorField}
                         type="password"
+                        onChange={this.onChangePassword}
                     />
 
                     <Field
@@ -59,6 +102,7 @@ export class SignUpForm extends Component {
                         label="Подтвердите пароль"
                         component={ErrorField}
                         type="password"
+                        onChange={this.onChangeConfirmPassword}
                     />
                     <div className="submit-section">
                         <input className="btn btn-primary"

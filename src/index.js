@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'
 import './config'
 import username from './utils/name'
 import setupSocket from './sockets'
-import handleNewMessage from './sagas/chat'
+
 
 import createStore from './store'
 
