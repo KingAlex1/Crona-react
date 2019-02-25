@@ -11,6 +11,7 @@ module.exports = function (mongoUri) {
         .connect(mongoUri)
         .then((mongodb) => {
             console.log('Mongo connected');
+            return mongodb;
         })
         .catch((err) => {
             console.log(err);

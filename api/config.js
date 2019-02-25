@@ -11,6 +11,10 @@ const PORT = process.env.PORT || config.get('port');
 const MONGO_URI = process.env.MONGO_URI || config.get('mongo.uri');
 const JWT_SECRET = config.get('jwt.secret');
 
+if (!JWT_SECRET) {
+    throw Error("You mast past jwt secret string")
+}
+
 
 module.exports = {
     PORT, MONGO_URI, JWT_SECRET

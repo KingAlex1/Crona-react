@@ -59,6 +59,7 @@
     "start": "react-scripts start",
     "node": "nodemon ./server/app",
     "dev": "nodemon  ./api/server",
+    "seed": "node ./api/seeds",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -73,6 +74,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "faker": "^4.1.0",
     "normalize.css": "^8.0.1"
   }
 }
