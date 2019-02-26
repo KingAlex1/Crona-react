@@ -1,7 +1,7 @@
 const jwtService = require('../services/jwt-service')
 const User = require('../modules/users/models/user')
 
-module.exports = async (req, res, next) => {
+module.exports = ()=> async (req, res, next) => {
     const {authorization} = req.headers
 
     if (authorization) {

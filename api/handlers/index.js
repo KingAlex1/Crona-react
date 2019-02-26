@@ -9,12 +9,13 @@ module.exports = function (app) {
     if (IS_DEV) {
         app.use(logger('dev'));
     }
-
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
-    // app.use(error404)
-    app.use(jwt);
+    // app.use(error404) 
+    console.log('ffff')
     app.use(error);
+    app.use(jwt());
+    
 
 
 };

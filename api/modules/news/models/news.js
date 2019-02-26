@@ -3,13 +3,13 @@ const {Schema} = require('mongoose')
 const uuid = require('uuid/v4')
 
 const NewsSchema = new Schema({
-    // userHash: {
-    //     type: String,
-    //     required: 'User hash is required',
-    // },
     userId: {
         type: String,
-        required: 'User id is required'
+        required: 'User id is required',
+    },
+    hash: {
+        type: String,
+        unique: 'Hash mast be unique',
     },
     title: {
         type: String,
@@ -34,7 +34,7 @@ const NewsSchema = new Schema({
 
 }, {timestamps: true})
 
-NewsSchema.statics.createFields = ['title', 'description', 'date', 'link']
+NewsSchema.statics.createFields = ['title', 'description', 'date', 'link', 'hash']
 
 // NewsSchema.virtual('user', {
 //     ref: 'user',
@@ -44,12 +44,12 @@ NewsSchema.statics.createFields = ['title', 'description', 'date', 'link']
 //
 // })
 //
-// NewsSchema.pre('save', function (next) {
-//     if (!this.hash) {
-//         this.hash = uuid()
-//     }
-//     next()
-//
-// })
+NewsSchema.pre('save', function (next) {
+    if (!this.hash) {
+        this.hash = uuid()
+    }
+    next()
+
+})
 
 module.exports = mongoose.model('news', NewsSchema);

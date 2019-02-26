@@ -1,11 +1,16 @@
 const User = require('../../users/models/user')
 const pick = require('lodash')
 const jwtService = require('../../../services/jwt-service')
+const UserService = require('../../users/services/user-service')
 
 const signUp = async (req, res) => {
-    const {_id} = await User.create(req.body);
-    console.log('fff', req.body)
-    const user = await User.findOneWithPublicFields({_id});
+
+    // const userData = pick(({...req.body}),User.createFields)
+    const userData = {...req.body}
+
+    const {_id} = await UserService.createUser(userData);
+    const user = await UserService.getUserWithPublicFields({_id});
+    res.status(201)
     res.send({data: user})
 }
 
@@ -26,7 +31,7 @@ const signIn = async (req, res) => {
         res.send('Не верный пароль');
     }
 
-    const token = await jwtService.genToken({ email });
+    const token = await jwtService.genToken({email});
 
     res.send({data: token})
 }

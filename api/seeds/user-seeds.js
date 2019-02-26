@@ -10,7 +10,7 @@ module.exports = () => {
     _.times(20, () => {
         const userPromise  = User.create({
             email: `${faker.lorem.word(1, 20)}-${faker.random.number(0, 999)}@${faker.lorem.word(1, 10)}`,
-            name: faker.lorem.word(2,10),
+            name: faker.name.firstName(),
             login: faker.lorem.word(2,10),
             password: 1111
         })

@@ -8,7 +8,7 @@ module.exports = function (mongoUri) {
         throw Error('Mongo uri is undefined');
     }
     return mongoose
-        .connect(mongoUri)
+        .connect(mongoUri,{ useNewUrlParser: true })
         .then((mongodb) => {
             console.log('Mongo connected');
             return mongodb;
