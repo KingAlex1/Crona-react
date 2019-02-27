@@ -10,13 +10,15 @@ module.exports = (users) => {
     
     const promises = [];
 
-    _.times(20, () => {
+    _.times(400, () => {
         const newsPropmise = News.create({
             title: faker.lorem.words(2, 5),
             description: faker.lorem.lines(4, 10),
             date: faker.date.past(1),
             link: '#',
-            userHash: users[faker.random.number(0, 19)].hash,
+            tags: faker.lorem.words(3, 7).split(' '),
+            userHash: users[faker.random.number(19)].hash,
+            
         })
 
         promises.push(newsPropmise);

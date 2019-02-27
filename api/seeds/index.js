@@ -8,7 +8,7 @@ initSeeds()
 async function initSeeds() {
     const mongoConnection = await mongooseConnector(MONGO_URI)
 
-    await mongoConnection.connection.collections['users'].drop()
+    await mongoConnection.connection.collections['news'].drop()
 
 
     try {

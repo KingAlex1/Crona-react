@@ -36,8 +36,18 @@ const signIn = async (req, res) => {
     res.send({data: token})
 }
 
+const currentUser = async (req, res) => {
+
+
+    const {user: {_id}} = req
+    const user = await UserService.getUserWithPublicFields({_id})
+
+    res.send({data: user})
+}
+
 
 module.exports = {
     signUp,
-    signIn
+    signIn,
+    currentUser
 }

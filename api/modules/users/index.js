@@ -6,7 +6,6 @@ const UsersController = require('./controllers/user-controller')
 const checkUserByHash = require('./handlers/checkUserByHash')
 
 
-router.get('/user/current-user', checkUser, UsersController.getCurrentUser)
 router.param('hash',checkUserByHash())
 router.get('/user/:hash/news' , UsersController.getNewsByUserHash)
 

@@ -11,8 +11,7 @@ module.exports = function (app) {
     }
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
-    // app.use(error404) 
-    console.log('ffff')
+    // app.use(error404)
     app.use(error);
     app.use(jwt());
     

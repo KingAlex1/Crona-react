@@ -30,11 +30,16 @@ const NewsSchema = new Schema({
         type: String,
         required: 'Link is required',
         trim: true,
-    }
+    },
+    tags: {
+        type: [String],
+        required: 'Tags is required',
+        trim: true,
+    },
 
 }, {timestamps: true})
 
-NewsSchema.statics.createFields = ['title', 'description', 'date', 'link', 'hash']
+NewsSchema.statics.createFields = ['title', 'description', 'date', 'link', 'hash','tags']
 
 // NewsSchema.virtual('user', {
 //     ref: 'user',

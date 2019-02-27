@@ -1,6 +1,7 @@
 const pick = require('lodash')
 const News = require('../models/news')
 const NewsService = require('../services/news-services')
+const parseQueryForSearch = require('../helpers/parseQueryForSearch')
 
 const create = async (req, res) => {
 
@@ -19,11 +20,10 @@ const create = async (req, res) => {
 const update = async (req, res, next) => {
 
     const {
-        params: {hash} , body, user: {hash:_hash},
+        params: {hash}, body, user: {hash: _hash},
     } = req;
-    
+
     const news = await News.findOne({hash})
-    console.log('ttt',hash, news.userHash , _hash)
 
     if (!news) {
         const err = new Error('Новость не найдена')
@@ -31,7 +31,8 @@ const update = async (req, res, next) => {
     }
 
     if (news.userHash !== _hash) {
-        const err = new Error('Не ваше новость')
+        res.status(403)
+        const err = new Error(`Запрещено ! Новость с хешем ${news.hash} создавали не Вы`)
         return next(err)
     }
 
@@ -43,17 +44,19 @@ const update = async (req, res, next) => {
 
 const del = async (req, res, next) => {
 
-    const {params: {hash},user: {hash: _hash,}} = req
+    const {params: {hash}, user: {hash: _hash,}} = req
 
     const news = await News.findOne({hash})
 
     if (!news) {
+        res.status(404)
         const err = new Error("Не найдено")
         return next(err)
     }
 
     if (news.userHash !== _hash) {
-        const err = new Error("Не ваше новость")
+        res.status(403)
+        const err = new Error(`Запрещено ! Новость с хешем ${news.hash} создавали не Вы`)
         return next(err)
     }
 
@@ -65,13 +68,20 @@ const del = async (req, res, next) => {
 }
 
 const getNews = async (req, res, next) => {
-    const {params:hash} = req
+    const {params: hash} = req
     const news = await News.findOne(hash)
-    console.log(news)
     res.send({data: news})
 }
 
+const searchNews = async (req, res, next) => {
+
+    const queryParams = req.query
+    const filter = parseQueryForSearch(queryParams)
+    const {news, ...rest} = await NewsService.search(filter)
+
+    res.send({data: news, filter, ...rest})
+}
 
 module.exports = {
-    create, update, del, getNews
+    create, update, del, getNews, searchNews
 }
