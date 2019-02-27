@@ -2,8 +2,8 @@ const News = require('../models/news')
 
 module.exports.createNews = async (data) => {
 
-    const {userId} = data
-    const newsCountByUserId = await News.count({userId})
+    const {userHash} = data
+    const newsCountByUserId = await News.count({userHash})
 
     if (newsCountByUserId === 10) {
         throw Error('The user cannot create more 3 Summary');

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const {create, update, del,getNews } = require('./controllers/news-controller')
 const checkUser = require('../../handlers/checkUser')
-// const checkNews = require('./handlers/checkNews')
 const News = require('./models/news')
 const checkNews = require('./handlers/checkNews')
 

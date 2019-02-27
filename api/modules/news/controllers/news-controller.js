@@ -4,7 +4,7 @@ const NewsService = require('../services/news-services')
 
 const create = async (req, res) => {
 
-    const newsData = {...req.body, userId: req.user._id}
+    const newsData = {...req.body, userHash: req.user.hash}
 
     try {
         const {_id} = await NewsService.createNews(newsData)
@@ -19,18 +19,18 @@ const create = async (req, res) => {
 const update = async (req, res, next) => {
 
     const {
-        params: {hash} , body, user: {_id: userId,},
+        params: {hash} , body, user: {hash:_hash},
     } = req;
-    console.log('ttttttttttttt', hash)
-    const news = await News.findOne({hash})
     
+    const news = await News.findOne({hash})
+    console.log('ttt',hash, news.userHash , _hash)
 
     if (!news) {
         const err = new Error('Новость не найдена')
         return next(err)
     }
 
-    if (news.userId !== userId.toHexString()) {
+    if (news.userHash !== _hash) {
         const err = new Error('Не ваше новость')
         return next(err)
     }
@@ -43,7 +43,7 @@ const update = async (req, res, next) => {
 
 const del = async (req, res, next) => {
 
-    const {user: {_id: userId,}, params: {hash}} = req
+    const {params: {hash},user: {hash: _hash,}} = req
 
     const news = await News.findOne({hash})
 
@@ -52,14 +52,14 @@ const del = async (req, res, next) => {
         return next(err)
     }
 
-    if (news.userId !== userId.toHexString()) {
+    if (news.userHash !== _hash) {
         const err = new Error("Не ваше новость")
         return next(err)
     }
 
     await news.remove()
 
-    res.send({data: {id: news._id}})
+    res.send({data: {id: news.hash}})
 
 
 }

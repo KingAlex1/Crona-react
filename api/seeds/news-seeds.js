@@ -16,7 +16,7 @@ module.exports = (users) => {
             description: faker.lorem.lines(4, 10),
             date: faker.date.past(1),
             link: '#',
-            userId: users[faker.random.number(0, 19)]._id,
+            userHash: users[faker.random.number(0, 19)].hash,
         })
 
         promises.push(newsPropmise);

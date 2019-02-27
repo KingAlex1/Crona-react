@@ -3,7 +3,7 @@ const {Schema} = require('mongoose')
 const uuid = require('uuid/v4')
 
 const NewsSchema = new Schema({
-    userId: {
+    userHash: {
         type: String,
         required: 'User id is required',
     },

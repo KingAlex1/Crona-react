@@ -4,7 +4,8 @@ module.exports.createUser = async (data) => {
     try {
         return await User.create(data)
     } catch (e) {
-        // throw new Error({status: 400, ...e})
+      throw new Error({status: 400, ...e})
+      
     }
 }
 
