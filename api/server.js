@@ -6,4 +6,4 @@ const server = app.listen(PORT, function () {
 
 })
 
-module.export = server
+module.exports = server

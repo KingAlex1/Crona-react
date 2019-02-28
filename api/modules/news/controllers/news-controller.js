@@ -3,7 +3,7 @@ const News = require('../models/news')
 const NewsService = require('../services/news-services')
 const parseQueryForSearch = require('../helpers/parseQueryForSearch')
 
-const create = async (req, res) => {
+const create = async (req, res, next) => {
 
     const newsData = {...req.body, userHash: req.user.hash}
 
@@ -13,7 +13,9 @@ const create = async (req, res) => {
         res.status(201)
         res.send({data: news})
     } catch (e) {
-        throw new Error(e)
+        res.status(403)
+        const err = new Error(e)
+        next(err)
     }
 }
 

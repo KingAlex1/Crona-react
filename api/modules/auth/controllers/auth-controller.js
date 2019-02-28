@@ -3,12 +3,18 @@ const pick = require('lodash')
 const jwtService = require('../../../services/jwt-service')
 const UserService = require('../../users/services/user-service')
 
-const signUp = async (req, res) => {
-
+const signUp = async (req, res, next) => {
     // const userData = pick(({...req.body}),User.createFields)
     const userData = {...req.body}
 
-    const {_id} = await UserService.createUser(userData);
+    try {
+        const {_id} = await UserService.createUser(userData);
+    } catch (e) {
+        res.status(403)
+        const err = new Error(e)
+        next(err)
+    }
+
     const user = await UserService.getUserWithPublicFields({_id});
     res.status(201)
     res.send({data: user})

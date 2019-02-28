@@ -22,7 +22,7 @@ const NewsSchema = new Schema({
         trim: true,
     },
     date: {
-        type: Date,
+        type: String,
         required: 'Date is required',
         trim: true,
     },
@@ -39,7 +39,7 @@ const NewsSchema = new Schema({
 
 }, {timestamps: true})
 
-NewsSchema.statics.createFields = ['title', 'description', 'date', 'link', 'hash','tags']
+NewsSchema.statics.createFields = ['title', 'description', 'date', 'link', 'tags']
 
 // NewsSchema.virtual('user', {
 //     ref: 'user',

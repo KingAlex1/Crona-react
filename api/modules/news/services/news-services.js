@@ -6,7 +6,7 @@ module.exports.createNews = async (data) => {
     const newsCountByUserId = await News.count({userHash})
 
     if (newsCountByUserId === 10) {
-        throw Error('The user cannot create more 3 Summary');
+        throw new Error('нельзя создавать больше 10 записей');
     }
     return News.create(data)
 }
@@ -39,7 +39,7 @@ module.exports.search = async ({tags, size, page, title}) => {
         .limit(size)
         .skip((page - 1) * size)
 
-    return {news, count, pages, page}
+    return {news, count, pages}
 
 
 }

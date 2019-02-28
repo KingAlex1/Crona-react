@@ -62,7 +62,12 @@
     "seed": "node ./api/seeds",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "nodetest": "set NODE_ENV=test&& jest api"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "browser": false
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -75,6 +80,7 @@
   ],
   "devDependencies": {
     "faker": "^4.1.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "supertest": "^3.4.2"
   }
 }
