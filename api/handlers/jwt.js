@@ -7,7 +7,6 @@ module.exports = ()=> async (req, res, next) => {
     if (authorization) {
         try {
             const {email} = await jwtService.verify(authorization);
-
             req.user = await User.findOne({email});
         } catch (e) {
             res.send("Неверный токен")

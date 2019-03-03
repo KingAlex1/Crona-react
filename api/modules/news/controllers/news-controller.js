@@ -28,6 +28,7 @@ const update = async (req, res, next) => {
     const news = await News.findOne({hash})
 
     if (!news) {
+        res.status(404)
         const err = new Error('Новость не найдена')
         return next(err)
     }
