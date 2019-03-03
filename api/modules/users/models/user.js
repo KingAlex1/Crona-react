@@ -8,17 +8,16 @@ const uuid = require('uuid/v4')
 mongoose.plugin(uniqueValidator);
 
 const UserSchema = new Schema({
-    login: {
+    name: {
         type: String,
-        required: [true, 'Укажите логин'],
         trim: true,
+        required: [true, 'Укажите имя']
     },
     hash: {
         type: String,
         unique: 'hash must be unique'
 
     },
-
     email: {
         type: String,
         unique: 'User with email "{VALUE}" already exist',
@@ -31,17 +30,13 @@ const UserSchema = new Schema({
         required: 'Укажите пароль',
         trim: true,
     },
-    name: {
-        type: String,
-        trim: true,
-        set: i => (i == '' ? 'Anonim' : i)
-    }
+
 
 }, {
     timestamps: true,
 });
 
-UserSchema.statics.createFields = ['name', 'email', 'password', 'login'];
+UserSchema.statics.createFields = ['name', 'email', 'password'];
 
 UserSchema.pre('save', function (next) {
     if (!this.isModified('password')) {
@@ -52,7 +47,7 @@ UserSchema.pre('save', function (next) {
 
     this.password = bcrypt.hashSync(this.password, salt);
 
-    if(!this.hash){
+    if (!this.hash) {
         this.hash = uuid()
     }
 

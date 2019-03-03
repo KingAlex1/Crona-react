@@ -7,17 +7,26 @@ import './index.scss'
 
 export class SingInForm extends Component {
 
+    renderWelcome = () =>{
 
+        const {user} = this.props
+        return (
+            <div className="sign-in-welcome line-2 anim-typewriter2">Добро пожаловать {user}</div>
+        )
+    }
 
     render() {
 
         const {handleSubmit} = this.props
+        const {user} = this.props
+
         return (
             <div className='sing-in'>
                 <div
                     className="main-blog-title"
                 >Вход в сервис
                 </div>
+                {user && this.renderWelcome()}
                 <form
                     method="POST"
                     className="sign-in-form"

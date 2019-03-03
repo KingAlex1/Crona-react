@@ -12,8 +12,8 @@ async function initSeeds() {
 
 
     try {
-        const users = await userSeeds()
-        const news = await newsSeeds(users)
+        // const users = await userSeeds()
+        const news = await newsSeeds()
 
     } catch (e) {
         console.error(e)

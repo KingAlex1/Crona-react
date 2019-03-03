@@ -2,3 +2,32 @@
   width: 480px;
   margin-top: 30px;
 }
+
+.sign-in-welcome{
+  padding-top: 16px;
+  font-size: 18px;
+
+}
+
+.line-2 {
+
+  color: #377dff;
+  white-space: nowrap;
+  overflow: hidden;
+  //transform: translateY(-50%);
+
+}
+
+.anim-typewriter2 {
+  animation: typewriter2 4s steps(44) 1s 1 normal both;
+}
+
+@keyframes typewriter2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 18em;
+  }
+}
+

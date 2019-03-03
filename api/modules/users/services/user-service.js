@@ -1,11 +1,13 @@
 const User = require('../models/user')
 
-module.exports.createUser = async (data) => {
+module.exports.createUser = async (data , res, next) => {
     try {
         return await User.create(data)
     } catch (e) {
-        throw new Error(e)
-      
+        res.status(403)
+        const err = new Error(e)
+        next(err)
+
     }
 }
 

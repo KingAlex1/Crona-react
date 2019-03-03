@@ -1,19 +1,18 @@
 import {fork} from 'redux-saga/effects'
-import {
-    signUpWatch,
-    signInWatch,
-    signOutWatch
-} from './auth'
+import {fetchSignUpWatch} from './signUp'
+import {fetchSignInWatch} from './signIn'
 import {handleNewMessageWatch} from './chat'
-import username from '../utils/name'
-import {socket} from '../index'
+import {fetchNewsWatch,fetchNewsByTagsWatch} from './news'
+import {authFlow} from "./auth";
 
 
 export default function* () {
-    yield fork(signUpWatch)
-    yield fork(signInWatch)
-    yield fork(signOutWatch)
+    yield fork(authFlow)
+    yield fork(fetchSignUpWatch)
+    yield fork(fetchSignInWatch)
+    yield fork(fetchNewsWatch)
     yield fork(handleNewMessageWatch)
+    yield fork(fetchNewsByTagsWatch)
 
 
 }

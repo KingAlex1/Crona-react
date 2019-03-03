@@ -14,12 +14,12 @@ export class ProtectedRoute extends Component {
     }
 
     renderProtected = (routeProps)=>{
-        const {component:ProtectedComponent, authorized} = this.props
-        return authorized ? <ProtectedComponent {...routeProps}/> :<UnAuthorized />
+        const {component:ProtectedComponent, isAuthorized} = this.props
+        return isAuthorized ? <ProtectedComponent {...routeProps}/> :<UnAuthorized />
     }
 }
 
 
 export default connect(state=>({
-    authorized: !!state.auth.user
+    isAuthorized: !!state.auth.isAuthorized
 }),null,null,{pure:false})(ProtectedRoute)

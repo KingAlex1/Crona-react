@@ -1,10 +1,10 @@
 import {
     signInRequest,
     signInSuccess,
-    signInError,
+    signInFailure,
     signUpRequest,
     signUpSuccess,
-    signUpError,
+    signUpFailure,
     signOutRequest,
     signOutSuccess
 } from '../actions/auth'
@@ -13,7 +13,8 @@ import {handleActions} from 'redux-actions'
 const initState = {
     user: null,
     error: null,
-    loading: false
+    loading: false,
+    isAuthorized: false
 
 }
 
@@ -24,15 +25,14 @@ export const auth = handleActions({
         }),
         [signUpSuccess]: (state, action) => ({
             ...state,
-            user: action.payload.user,
-            loading: false,
-            error: null
+            isAuthorized: true
         }),
-        [signUpError]: (state, action) => ({
+        [signUpFailure]: (state, action) => ({
             ...state,
             user: null,
             loading: false,
-            error: action.error
+            error: action.error,
+            isAuthorized: false,
         }),
         [signInRequest]: (state, action) => ({
             ...state,
@@ -40,15 +40,17 @@ export const auth = handleActions({
         }),
         [signInSuccess]: (state, action) => ({
             ...state,
-            user: action.payload.user,
-            loading:false,
-            error: action.error
+            user: action.payload.name,
+            loading: false,
+            error: action.error,
+            isAuthorized: true
         }),
-        [signInError]: (state, action) => ({
+        [signInFailure]: (state, action) => ({
             ...state,
             user: null,
             loading: false,
-            error: action.error
+            error: action.error,
+            isAuthorized: false,
         }),
         [signOutSuccess]: (state, action) => ({
             ...state,
@@ -59,3 +61,5 @@ export const auth = handleActions({
     },
     initState
 )
+
+export const getIsAuthorized = state => state.auth.isAuthorized;

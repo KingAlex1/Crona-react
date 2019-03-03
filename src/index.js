@@ -8,6 +8,7 @@ import {Provider} from 'react-redux'
 import './config'
 import username from './utils/name'
 import setupSocket from './sockets'
+import 'semantic-ui-css/semantic.min.css'
 
 
 import createStore from './store'

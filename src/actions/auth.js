@@ -3,19 +3,21 @@ import {createActions} from 'redux-actions'
 export const {
     signUpRequest,
     signUpSuccess,
-    signUpError,
+    signUpFailure,
     signInRequest,
     signInSuccess,
-    signInError,
+    signInFailure,
     signOutRequest,
-    signOutSuccess
+    signOutSuccess,
+    
 } = createActions(
     "SIGN_UP_REQUEST",
     "SIGN_UP_SUCCESS",
-    "SIGN_UP_ERROR",
+    "SIGN_UP_FAILURE",
     "SIGN_IN_REQUEST",
     "SIGN_IN_SUCCESS",
-    "SIGN_IN_ERROR",
+    "SIGN_IN_FAILURE",
     "SIGN_OUT_REQUEST",
-    "SIGN_OUT_SUCCESS"
+    "SIGN_OUT_SUCCESS",
+    
 )

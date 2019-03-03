@@ -24,12 +24,16 @@ export class AuthPage extends Component {
             <div className='auth-page'>
                 <Route
                     path="/auth/signup"
-                    component={SignUpForm}/>
+                    render={() => <SignUpForm
+                        onSubmit={this.handleSingUp}
+
+                    />}/>
                 <Route
                     exact
                     path={["/auth/signin", "/auth"]}
                     render={() => <SignInForm
-                        onSubmit={this.handleSingIn}/>}/>
+                        onSubmit={this.handleSingIn}
+                        user={this.props.user}/>}/>
                 <div className="auth-links-section">
                     <NavLink
                         isActive={() => window.location.pathname.includes('auth') && !window.location.pathname.includes('signup')}
@@ -50,18 +54,30 @@ export class AuthPage extends Component {
         )
     }
 
-    handleSingIn = (payload) => {
-        return this.props.signUpRequest(payload)
+    handleSingIn = ({email, password}) => {
+        this.props.signInRequest({
+            email, password
+        })
 
     }
-    handleSingUp = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:4200/auth/signup')
+    handleSingUp = ({username, email, password}) => {
+        this.props.signUpRequest({
+            username,
+            email,
+            password
+        })
     }
 }
 
 
-export default connect(state => ({loading: state.auth.loading}), {
+const mapStateToProps = state => ({
+    loading: state.auth.loading,
+    user: state.auth.user
+})
+
+const mapDispatchTProps = {
     signUpRequest,
     signInRequest
-})(AuthPage)
+}
+
+export default connect(mapStateToProps, mapDispatchTProps)(AuthPage)

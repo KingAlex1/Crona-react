@@ -20,6 +20,7 @@ import Blog from '../Blog'
 import News from '../News'
 import Chat from '../Chat'
 import Table from '../Table'
+import CurrentNews from '../CurrentNews'
 
 import './index.scss'
 
@@ -85,9 +86,14 @@ export class MainContent extends Component {
                                         component={Table}
                                     />
                                     <ProtectedRoute
-                                        path='/news'
+                                        exact path='/news'
                                         component={News}
                                     />
+                                    <ProtectedRoute
+                                        path='/news/:hash'
+                                        component={CurrentNews}
+                                    />
+
 
                                     <Redirect from='*'
                                               to="/"

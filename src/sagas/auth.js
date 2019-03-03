@@ -1,67 +1,43 @@
+import {take, put, call, select } from 'redux-saga/effects'
 import {
-    call,
-    take,
-    takeEvery,
-    takeLatest,
-    select,
-    put
-} from 'redux-saga/effects'
-import firebase from 'firebase'
-import {
-    signInError,
     signInSuccess,
-    signUpError, signUpRequest,
-    signUpSuccess, signInRequest, signOutRequest,
-    signOutSuccess
+    signUpSuccess,
+    signOutRequest
 } from "../actions/auth";
+import {
+    getTokenFromLocalStorage,
+    setTokenToLocalStorage,
+    removeTokenFromLocalStorage
+} from "../localStorage";
+import {setTokenApi, clearTokenApi} from "../api";
+import {getIsAuthorized} from '../reducers/auth'
 
+export function* authFlow() {
+  
+    while (true) {
+        const isAuthorized = yield select(getIsAuthorized)
+        const localStorageToken = yield call(getTokenFromLocalStorage)
+        let token
 
-export function* signUpSaga(action) {
-    const auth = firebase.auth()
-    try {
-        const user = yield call([auth, auth.createUserWithEmailAndPassword],
-            action.payload.email, action.payload.password)
-        yield put(signUpSuccess(user))
-    } catch (error) {
-        yield put(signUpError(error))
+        if (!isAuthorized) {
+            if (localStorageToken) {
+                token = localStorageToken;
+                yield put(signInSuccess(token))
+                console.log(token)
+            } else {
+                const action = yield take([signInSuccess, signUpSuccess])
+                token = action.payload.data
+
+            }
+        }
+        console.log(token)
+
+        yield call(setTokenApi, token)
+        yield call(setTokenToLocalStorage, token)
+        yield take(signOutRequest)
+        yield call(removeTokenFromLocalStorage)
+        yield call(clearTokenApi)
+
     }
-}
 
-export function* signInSaga(action) {
-    const auth = firebase.auth()
-    try {
-        const user = yield call([auth, auth.signInWithEmailAndPassword],
-            action.payload.email, action.payload.password)
-
-        console.log(user)
-        yield put(signInSuccess(user))
-    } catch (error) {
-        yield put(signInError(error))
-    }
-
-}
-
-export function* signOutSaga() {
-    const auth = firebase.auth()
-    try {
-        yield call([auth,auth.signOut])
-        yield put(signOutSuccess())
-    }catch (error){
-        console.log(error)
-    }
-
-}
-
-export function* signUpWatch() {
-    yield takeLatest(signUpRequest, signUpSaga)
-
-}
-
-export function* signInWatch() {
-    yield takeLatest(signInRequest, signInSaga)
-
-}
-
-export function* signOutWatch() {
-    yield takeLatest(signOutRequest,signOutSaga)
 }

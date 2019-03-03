@@ -1,0 +1,16 @@
+.current-news__link-back{
+  display: block;
+  margin-top: 18px;
+  position: relative;
+  &:after{
+    content: "\27A6";
+    position: absolute;
+    margin-left: 20px;
+  }
+}
+
+.current-news-item__description{
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 22px;
+}

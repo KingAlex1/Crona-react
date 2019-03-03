@@ -3,8 +3,13 @@ import {reducer as form} from 'redux-form'
 import {auth} from './auth'
 import {messages} from "./messages";
 import {users} from "./users";
+import {news} from "./news";
 
 
 export default combineReducers({
-    form,auth,messages, users
+    form,
+    auth,
+    messages,
+    users,
+    news
 })

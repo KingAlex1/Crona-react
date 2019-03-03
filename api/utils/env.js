@@ -5,8 +5,6 @@ const IS_DEV = ENV === envs.development;
 const IS_PROD = ENV === envs.production;
 const IS_TEST = ENV === envs.test;
 
-console.log(IS_TEST)
-
 module.exports = {
     ENV,
     IS_DEV,

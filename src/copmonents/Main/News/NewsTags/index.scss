@@ -1,0 +1,21 @@
+.tags-section{
+  width: 100px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.tags-list-section{
+
+}
+
+.tags-item-search{
+  display: inline-block;
+  background-color: white;
+  padding: 0 6px;
+  margin: 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px;
+  cursor:pointer;
+  &:hover{
+    background-color: #3ec6ff;
+  }
+}

@@ -50,6 +50,8 @@
     "redux-form": "^8.1.0",
     "redux-saga": "^1.0.1",
     "reselect": "^4.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.85.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.2.0",
     "uuid": "^3.3.2",

@@ -2,12 +2,12 @@ const News = require('../models/news')
 
 module.exports.createNews = async (data) => {
 
-    const {userHash} = data
-    const newsCountByUserId = await News.count({userHash})
-
-    if (newsCountByUserId === 10) {
-        throw new Error('нельзя создавать больше 10 записей');
-    }
+    // const {userHash} = data    
+    // const newsCountByUserId = await News.count({userHash})
+    // if (newsCountByUserId === 10) {
+    //     throw new Error('нельзя создавать больше 10 записей');
+    // }
+    
     return News.create(data)
 }
 
