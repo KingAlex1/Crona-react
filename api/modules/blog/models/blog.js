@@ -42,11 +42,12 @@ const BlogSchema = new Schema({
         required: 'Tags is required',
         trim: true,
     },
-    comments: {
-        type: Number,
-        required: 'Author is required',
-        trim: true,
-    }
+    comments: [{
+        name: String,
+        email: String,
+        description: String,
+        time: String,
+    }]
 
 }, {timestamps: true})
 
@@ -55,9 +56,9 @@ BlogSchema.statics.createFields = [
     'description',
     'category ',
     'date',
-    'image', 
+    'image',
     'author',
-    'tags', 
+    'tags',
     'comments'
 ]
 

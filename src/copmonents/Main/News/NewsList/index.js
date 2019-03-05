@@ -2,6 +2,9 @@ import React from 'react'
 import {NewsItem} from "../NewsItem";
 
 
+
+import './index.scss'
+
 export const NewsList = ({news}) => {
 
     return (
@@ -14,6 +17,7 @@ export const NewsList = ({news}) => {
 
     )
 }
+
 
 NewsList.defaultProps = {
     news: []

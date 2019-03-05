@@ -10,9 +10,9 @@ import {connect} from 'react-redux'
 export class Header extends Component {
     render() {
 
-        const {signOutRequest, signedIn} = this.props
+        const {signOutRequest, isAuthorized} = this.props
 
-        const link = signedIn
+        const link = isAuthorized
             ? (<NavLink
                 className='nav-bar__link'
                 activeClassName='selected'
@@ -77,6 +77,6 @@ export class Header extends Component {
 }
 
 export default connect(state => ({
-    signedIn: !!state.auth.user
+    isAuthorized: state.auth.isAuthorized
 }), {signOutRequest}, null, {pure: false})(Header)
 

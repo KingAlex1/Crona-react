@@ -1,0 +1,130 @@
+.blog-item {
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  padding: 40px 0 44px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.post-payload {
+  display: block;
+
+}
+
+.post-payload__date {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  color: #828286;
+  background-color: white;
+  text-align: center;
+}
+
+.post-payload__date-month {
+  text-transform: uppercase;
+  vertical-align: middle;
+  padding: 4px 0 0 0;
+}
+
+.post-payload__date-number {
+  font-weight: 700;
+  padding: 2px 0 2px 0;
+}
+
+.post-payload__type {
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #bdbdbd;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+}
+
+.post-info {
+  margin-left: 14px;
+  color: #828286;
+}
+
+.post-info__image {
+  width:100%;
+  height: 240px;
+  background-color: white
+}
+
+.post-info__title {
+  margin-top: 36px;
+  color: #3ec6ff;
+  font-size: 20px;
+}
+
+.post-info__settings {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.post-info__author {
+  font-style: italic;
+}
+
+.post-info__tags {
+  margin-left: 40px;
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+}
+.tag-section{
+  display: inline-block;
+  margin-left: 30px;
+}
+.post-info__tags-item{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.tags-item-icon-blog{
+  display: inline-block;
+  color: #3ec6ff;
+
+}
+
+.post-info__comments {
+  margin-left: 10px;
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+}
+
+
+
+.post-info__description {
+  margin-top: 36px;
+  font-size: 14px;
+  line-height: 22px;
+  height: 82px;
+  //white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 5px;
+}
+.current-post-info__description{
+  margin-top: 36px;
+  font-size: 14px;
+  line-height: 22px;
+  padding-right: 5px;
+}
+.post-info__continue {
+  display: inline-block;
+  margin-top: 24px;
+  text-decoration: none;
+  position: relative;
+
+  &:after {
+
+      content: "\27A5";
+      position: absolute;
+      margin-left: 20px;
+    }
+}

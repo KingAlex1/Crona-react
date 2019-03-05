@@ -1,25 +1,32 @@
 import React, {Component} from 'react'
 import {Route, NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-import SignInForm from '../Auth/SingInFrom'
-import SignUpForm from '../Auth/SingUpForm'
+import SignInForm from '../Auth/SignInFrom'
+import SignUpForm from '../Auth/SignUpForm'
 import {
     signUpRequest,
-    signInRequest
+    signInRequest,
+    signOutRequest
 } from '../../../actions/auth'
 import Spinner from 'react-svg-spinner'
-
+import Welcome from '../Auth/Welcome'
 
 import './index.scss'
-import axios from "axios/index";
 
-export class AuthPage extends Component {
+export class AuthPage extends Component {  
 
     render() {
-        const {loading} = this.props
+        const {loading, isAuthorized, user} = this.props
 
-        if (loading) return <Spinner
-            height="50px" width="50px"/>
+        if (loading) {
+            return <Spinner
+                height="50px" width="50px"/>
+        }
+        if (isAuthorized) {
+            return <Welcome user={user}/>
+            
+        }
+
         return (
             <div className='auth-page'>
                 <Route
@@ -33,7 +40,7 @@ export class AuthPage extends Component {
                     path={["/auth/signin", "/auth"]}
                     render={() => <SignInForm
                         onSubmit={this.handleSingIn}
-                        user={this.props.user}/>}/>
+                        />}/>
                 <div className="auth-links-section">
                     <NavLink
                         isActive={() => window.location.pathname.includes('auth') && !window.location.pathname.includes('signup')}
@@ -55,6 +62,10 @@ export class AuthPage extends Component {
     }
 
     handleSingIn = ({email, password}) => {
+        setTimeout(()=>{
+            this.props.history.push("/blog")
+        },6000)
+        
         this.props.signInRequest({
             email, password
         })
@@ -72,12 +83,14 @@ export class AuthPage extends Component {
 
 const mapStateToProps = state => ({
     loading: state.auth.loading,
-    user: state.auth.user
+    user: state.auth.user,
+    isAuthorized: state.auth.isAuthorized,
 })
 
 const mapDispatchTProps = {
     signUpRequest,
-    signInRequest
+    signInRequest,
+    signOutRequest
 }
 
 export default connect(mapStateToProps, mapDispatchTProps)(AuthPage)

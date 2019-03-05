@@ -4,7 +4,6 @@ const parseQueryForSearch = require('../helpers/parseQueryForSearch')
 
 const create = async (req, res, next) => {
     const blogData = {...req.body}
-
     try {
         const {_id} = await BlogService.createBlog(blogData)
         const blog = await Blog.findOne({_id})
@@ -64,7 +63,7 @@ const del = async (req, res, next) => {
 
 
 const getBlog = async (req, res, next) => {
-    const {params:hash} = req
+    const {params: hash} = req
 
     const blog = await Blog.findOne(hash);
     console.log(blog)

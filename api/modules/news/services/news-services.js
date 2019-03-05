@@ -30,7 +30,16 @@ module.exports.search = async ({tags, size, page, title}) => {
     }
 
     const count = await News.count(query)
+    const tagList = await News.find({}).select('tags -_id')
+    const tagArr =[]
+    tagList.forEach((el) => {
+        el.tags.forEach((el)=>{
+            if(!tagArr.includes(el)){
+                tagArr.push(el)
+            }
+        })
 
+    })
     const pages = Math.ceil(count / size)
 
     const news = await News
@@ -39,7 +48,7 @@ module.exports.search = async ({tags, size, page, title}) => {
         .limit(size)
         .skip((page - 1) * size)
 
-    return {news, count, pages}
+    return {news, count, pages,tagArr}
 
 
 }

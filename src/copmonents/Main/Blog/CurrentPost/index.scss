@@ -1,0 +1,10 @@
+.post-info__back{
+  display: block;
+  margin-top: 18px;
+  position: relative;
+  &:after{
+    content: "\27A6";
+    position: absolute;
+    margin-left: 20px;
+  }
+}

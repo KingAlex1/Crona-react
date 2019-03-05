@@ -1,0 +1,15 @@
+.blog-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

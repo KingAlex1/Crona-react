@@ -30,7 +30,6 @@ export function* authFlow() {
 
             }
         }
-        console.log(token)
 
         yield call(setTokenApi, token)
         yield call(setTokenToLocalStorage, token)

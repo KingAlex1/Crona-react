@@ -7,12 +7,8 @@ const signUp = async (req, res, next) => {
 
     // const userData = pick(({...req.body}),User.createFields)
     const userData = {...req.body}
-
-
     const {_id} = await UserService.createUser(userData, res, next);
-
     console.log(_id)
-
     const user = await UserService.getUserWithPublicFields({_id});
     res.status(201)
     res.send({data: user})

@@ -30,8 +30,6 @@ export class CurrentNews extends Component {
             year: 'numeric'
         })
         
-        console.log(currentNews)
-
         return (
             <div className='current-news'>
                 <h2 className="news-item__title">{currentNews.title}</h2>

@@ -26,7 +26,23 @@ module.exports.search = async ({tags, size, page, title, category}) => {
     }
 
     const count = await Blog.count(query)
-
+    const catlist = await Blog.find({}).select('category -_id')
+    const tagList = await Blog.find({}).select('tags -_id')
+    const catArr = []
+    catlist.forEach((el) => {
+        if (!catArr.includes(el.category)) {
+            catArr.push(el.category)
+        }})
+    const tagArr =[]
+    tagList.forEach((el) => {
+        el.tags.forEach((el)=>{
+            if(!tagArr.includes(el)){
+                tagArr.push(el)
+            }
+        })
+        
+    })
+    
     const pages = Math.ceil(count / size)
 
     const blog = await Blog
@@ -35,6 +51,6 @@ module.exports.search = async ({tags, size, page, title, category}) => {
         .limit(size)
         .skip((page - 1) * size)
 
-    return {blog, count, pages}
+    return {blog, count, pages,tagArr, catArr}
 
 }

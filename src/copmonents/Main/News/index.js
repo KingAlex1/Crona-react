@@ -6,11 +6,13 @@ import {
 } from "../../../actions/news";
 import {NewsList} from "./NewsList";
 import {PageNumbers} from './PageNumbers'
+import Tags from '../../common/Tags'
 import {
     getPages,
     getNews,
     getCount,
     getFilter,
+    getTags
 
 } from "../../../reducers/news";
 import Spinner from "react-svg-spinner";
@@ -22,7 +24,7 @@ import {
 
 
 import './index.scss'
-import NewsTags from "./NewsTags";
+
 
 
 export class News extends Component {
@@ -50,8 +52,8 @@ export class News extends Component {
 
     handleTagClick = (e) => {
         const tag = e.target.textContent
-        const currentPage = e.target.getAttribute('value')
-        this.setState({currentPage: currentPage, tag: tag})
+        const {currentPage} = this.state
+        this.setState({tag: tag})
         window.scrollTo(0, 0)
         this.props.fetchNewsByTagsRequest({
             tag,
@@ -60,19 +62,22 @@ export class News extends Component {
     }
 
     render() {
-        const {news, pages, loading} = this.props
+        const {news, pages, loading, tags} = this.props
+        console.log(tags)
 
-        console.log(loading)
         if (loading) {
-            return <Spinner size="64px" color={'#3ec6ff'} />
+            return <Spinner size="64px" color={'#3ec6ff'}/>
         }
         return (
-
             <div className="news-section">
                 <div className="news-main">
                     <NewsList news={news}/>
-                    <NewsTags news={news}
-                              handleTagClick={this.handleTagClick}/>
+                    <div className="options">
+                        <Tags
+                            list={news}
+                            tags={tags}
+                            handleTagClick={this.handleTagClick}/>
+                    </div>
                 </div>
                 {pages > 1 && <PageNumbers pages={pages}
                                            handleClick={this.handleClick}
@@ -84,11 +89,17 @@ export class News extends Component {
     }
 }
 
+News.defaultProps = {
+    news: [],
+    tags: []
+}
+
 
 const mapStateToProps = state => ({
     news: state.news.news,
     loading: state.news.loading,
-    pages: getPages(state)
+    pages: getPages(state),
+    tags: getTags(state)
 })
 
 const mapDispatchToProps = {

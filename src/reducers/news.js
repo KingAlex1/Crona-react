@@ -14,7 +14,8 @@ const initState = {
     loading: false,
     filter: {},
     count: null,
-    pages: null
+    pages: null,
+
 }
 
 export const news = handleActions({
@@ -22,7 +23,8 @@ export const news = handleActions({
             ...state,
             news: [],
             error: null,
-            loading: true
+            loading: true,
+            tags: null,
         }),
         [fetchNewsSuccess]: (state, action) => ({
             ...state,
@@ -31,7 +33,8 @@ export const news = handleActions({
             loading: false,
             filter: action.payload.filter,
             count: action.payload.count,
-            pages: action.payload.pages
+            pages: action.payload.pages,
+            tags: action.payload.tagArr,
         }),
         [fetchNewsFailure]: (state, action) => ({
             ...state,
@@ -40,7 +43,8 @@ export const news = handleActions({
             loading: false,
             filter: {},
             count: null,
-            pages: null
+            pages: null,
+            tags: null,
         }),
         [fetchNewsByTagsRequest]: (state, action) => ({
             ...state,
@@ -55,7 +59,8 @@ export const news = handleActions({
             loading: false,
             filter: action.payload.filter,
             count: action.payload.count,
-            pages: action.payload.pages
+            pages: action.payload.pages,
+            tags: action.payload.tagArr,
         }),
         [fetchNewsByTagsFailure]: (state, action) => ({
             ...state,
@@ -64,7 +69,8 @@ export const news = handleActions({
             loading: false,
             filter: {},
             count: null,
-            pages: null
+            pages: null,
+            tags: null,
         }),
 
     },
@@ -75,6 +81,7 @@ export const getNews = state => state.news.news
 export const getFilter = state => state.news.filter
 export const getCount = state => state.news.count
 export const getPages = state => state.news.pages
+export const getTags = state => state.news.tags
 
 
 

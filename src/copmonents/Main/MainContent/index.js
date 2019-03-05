@@ -20,7 +20,8 @@ import Blog from '../Blog'
 import News from '../News'
 import Chat from '../Chat'
 import Table from '../Table'
-import CurrentNews from '../CurrentNews'
+import CurrentNews from '../News/CurrentNews'
+import CurrentPost from '../Blog/CurrentPost'
 
 import './index.scss'
 
@@ -74,10 +75,14 @@ export class MainContent extends Component {
                                         component={AuthPage}
                                     />
                                     <ProtectedRoute
-                                        path='/blog'
+                                        exact path='/blog'
                                         component={Blog}
                                     />
-                                    <Route
+                                    <ProtectedRoute
+                                        path='/blog/:hash'
+                                        component={CurrentPost}
+                                    />
+                                    <ProtectedRoute
                                         path='/chat'
                                         component={Chat}
                                     />
@@ -85,15 +90,14 @@ export class MainContent extends Component {
                                         path='/table'
                                         component={Table}
                                     />
-                                    <ProtectedRoute
+                                    <Route
                                         exact path='/news'
                                         component={News}
                                     />
-                                    <ProtectedRoute
+                                    <Route
                                         path='/news/:hash'
                                         component={CurrentNews}
                                     />
-
 
                                     <Redirect from='*'
                                               to="/"

@@ -2,6 +2,8 @@ import React from 'react'
 import {Link, Route} from 'react-router-dom';
 import {Icon} from 'semantic-ui-react'
 
+
+
 import './index.scss'
 
 export const NewsItem = ({item}) => {
@@ -12,6 +14,7 @@ export const NewsItem = ({item}) => {
         year: 'numeric'
     })
 
+    
     return (
 
         <li className="news-item">

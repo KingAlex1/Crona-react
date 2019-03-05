@@ -52,11 +52,12 @@ export const auth = handleActions({
             error: action.error,
             isAuthorized: false,
         }),
-        [signOutSuccess]: (state, action) => ({
+        [signOutRequest]: (state, action) => ({
             ...state,
             user: null,
             error: null,
-            loading: false
+            loading: false,
+            isAuthorized: false,
         })
     },
     initState
