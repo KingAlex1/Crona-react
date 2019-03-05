@@ -1,11 +1,12 @@
-import {takeEvery} from 'redux-saga/effects'
+import {takeEvery,select} from 'redux-saga/effects'
 import {addMessage} from '../actions/chat'
 import {socket} from "../index";
-import username from '../utils/name'
+import {getUser} from "../reducers/auth";
+
 
 function* handleNewMessage(action) {
 
-    action.author = username
+    action.author = yield select(getUser)
     console.log(action.payload)
     socket.send(JSON.stringify(action))
 }

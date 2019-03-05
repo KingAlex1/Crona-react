@@ -9,6 +9,8 @@ const app = express();
 initHandlers(app)
 app.use(modules)
 
+require('./webSocket')
+
 app.use(function (req, res) {
 
 })

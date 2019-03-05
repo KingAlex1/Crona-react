@@ -48,7 +48,7 @@ export class Blog extends Component {
 
     handleTagClick = (e) => {
         const tag = e.target.textContent
-        const {currentPage} = this.state
+        const currentPage = 1 
         this.setState({tag: tag})
         window.scrollTo(0, 0)
         this.props.fetchBlogByTagsRequest({
@@ -59,7 +59,7 @@ export class Blog extends Component {
 
     handleCategoryClick = (e) => {
         const category = e.target.textContent
-        const {currentPage} = this.state
+        const currentPage = 1
         this.setState({category: category})
         window.scrollTo(0, 0)
         this.props.fetchBlogByCategoryRequest({

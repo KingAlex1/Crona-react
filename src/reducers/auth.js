@@ -64,3 +64,4 @@ export const auth = handleActions({
 )
 
 export const getIsAuthorized = state => state.auth.isAuthorized;
+export const getUser = state => state.auth.user

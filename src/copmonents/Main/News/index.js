@@ -52,7 +52,7 @@ export class News extends Component {
 
     handleTagClick = (e) => {
         const tag = e.target.textContent
-        const {currentPage} = this.state
+        const currentPage = 1 
         this.setState({tag: tag})
         window.scrollTo(0, 0)
         this.props.fetchNewsByTagsRequest({

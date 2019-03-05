@@ -5,7 +5,7 @@ import './index.css';
 import Main from './copmonents/Main'
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
-import './config'
+
 import username from './utils/name'
 import setupSocket from './sockets'
 import 'semantic-ui-css/semantic.min.css'
