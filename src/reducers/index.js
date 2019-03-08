@@ -5,6 +5,7 @@ import {messages} from "./messages";
 import {users} from "./users";
 import {news} from "./news";
 import {blog} from "./blog";
+import {user} from "./user";
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
     messages,
     users,
     news,
-    blog
+    blog,
+    user
 })

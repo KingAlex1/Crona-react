@@ -5,20 +5,10 @@ import './index.css';
 import Main from './copmonents/Main'
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
-
-import username from './utils/name'
-import setupSocket from './sockets'
 import 'semantic-ui-css/semantic.min.css'
-
-
 import createStore from './store'
 
-
-
-const store = createStore();
-
-export const socket = setupSocket(store.dispatch, username)
-
+export const store = createStore();
 
 ReactDOM.render(
     <BrowserRouter>

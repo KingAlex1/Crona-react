@@ -1,7 +1,10 @@
 import {fork} from 'redux-saga/effects'
 import {fetchSignUpWatch} from './signUp'
 import {fetchSignInWatch} from './signIn'
-import {handleNewMessageWatch} from './chat'
+import {
+    handleNewMessageWatch,
+    socketSaga
+} from './chat'
 import {fetchNewsWatch, fetchNewsByTagsWatch} from './news'
 import {
     fetchBlogWatch,
@@ -12,8 +15,10 @@ import {
 import {authFlow} from "./auth";
 
 
+
 export default function* () {
     yield fork(authFlow)
+    yield fork(socketSaga)
     yield fork(fetchSignUpWatch)
     yield fork(fetchSignInWatch)
     yield fork(fetchNewsWatch)
@@ -23,6 +28,7 @@ export default function* () {
     yield fork(fetchBlogByTagsWatch)
     yield fork(fetchBlogByCategoryWatch)
     yield fork(sendMessageWatch)
+
 
 
 }

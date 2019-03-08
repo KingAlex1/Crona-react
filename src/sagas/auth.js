@@ -22,8 +22,7 @@ export function* authFlow() {
         if (!isAuthorized) {
             if (localStorageToken) {
                 token = localStorageToken;
-                yield put(signInSuccess(token))
-                console.log(token)
+                yield put(signInSuccess(token))           
             } else {
                 const action = yield take([signInSuccess, signUpSuccess])
                 token = action.payload.data
@@ -36,7 +35,5 @@ export function* authFlow() {
         yield take(signOutRequest)
         yield call(removeTokenFromLocalStorage)
         yield call(clearTokenApi)
-
     }
-
 }

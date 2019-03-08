@@ -67,6 +67,16 @@ export const fetchCurrentNews = (hash) =>
             console.log(error);
         });
 
+
+export const fetchUser = () =>
+    axios.get(`http://localhost:4000/auth/current-user`)
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
 export const fetchPosts = (page) =>
     axios.get(`http://localhost:4000/blog?page=${page}`)
         .then(function (response) {

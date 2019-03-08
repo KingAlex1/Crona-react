@@ -22,10 +22,14 @@ import Chat from '../Chat'
 import Table from '../Table'
 import CurrentNews from '../News/CurrentNews'
 import CurrentPost from '../Blog/CurrentPost'
+import {connect} from 'react-redux'
+import {fetchCurrentUserRequest} from "../../../actions/user";
 
 import './index.scss'
 
 export class MainContent extends Component {
+
+
 
     render() {
 
@@ -35,7 +39,6 @@ export class MainContent extends Component {
                     <div className='container'>
                         <div className='content'>
                             <SideBar/>
-
                             <div className='content__info'>
                                 <Switch>
                                     <Route
@@ -104,12 +107,9 @@ export class MainContent extends Component {
                                     />
                                 </Switch>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
         )
     }
