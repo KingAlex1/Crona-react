@@ -21,7 +21,6 @@ export function* fetchNewsSaga(action) {
 
 export function* fetchNewsByTagsSaga(action) {
     try {
-
         let response = yield call(fetchNewsByTags, action.payload)
         yield put(fetchNewsByTagsSuccess(response.data))
     } catch (error) {

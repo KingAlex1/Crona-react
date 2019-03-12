@@ -49,6 +49,7 @@ export class List extends Component {
             >
                 {({onRowsRendered, registerChild}) =>
                     <Table
+                        className="table__list"
                         ref={registerChild}
                         rowCount={codes.length}
                         rowGetter={this.rowGetter}

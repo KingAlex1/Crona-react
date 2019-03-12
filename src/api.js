@@ -38,12 +38,10 @@ export const clearTokenApi = () => {
 };
 
 
-export const fetchCodesLaze = (size) => 
-    axios.get(`http://localhost:4000/table?size=${size}`)
+export const fetchCodesLaze = (size, search) =>
+    axios.get(`http://localhost:4000/table?size=${size}&search=${search}`)
         .then(function (response) {
-            
             return response;
-          
         })
         .catch(function (error) {
             console.log(error);

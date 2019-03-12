@@ -9,7 +9,8 @@ import {
     fetchCodesLezyRequest,
     fetchCodesLezyStart,
     fetchCodesLezySuccess,
-    fetchCodesLezyFailure
+    fetchCodesLezyFailure,
+    fetchCodesNewSearch
 } from "../actions/codes";
 import {getState, getCodes} from '../reducers/codes'
 import {fetchCodesLaze} from "../api";
@@ -18,7 +19,14 @@ import {fetchCodesLaze} from "../api";
 export function* fetchCodesSaga() {
 
     while (true) {
-        yield take(fetchCodesLezyRequest)
+
+        const request = yield take(fetchCodesLezyRequest)
+
+        var search
+        if (request.payload) {
+            search = request.payload
+            yield put(fetchCodesNewSearch())
+        }
         const state = yield select(getState)
 
         if (state.loading) continue
@@ -28,8 +36,8 @@ export function* fetchCodesSaga() {
         const codes = yield select(getCodes)
         const size = codes.length
 
-        let response = yield call(fetchCodesLaze, size)
-        
+        let response = yield call(fetchCodesLaze, size, search)
+
         yield put(fetchCodesLezySuccess(response.data))
 
     }

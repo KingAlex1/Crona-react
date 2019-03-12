@@ -13,4 +13,6 @@ const CodesSchema = new Schema({
     }
 })
 
+CodesSchema.index({name: 'text', 'name': 'text'})
+
 module.exports = mongoose.model('codes', CodesSchema)

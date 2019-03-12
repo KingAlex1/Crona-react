@@ -6,10 +6,10 @@ const searchCodes = async (req, res) => {
 
 
 
-    const {size} = req.query
+    const {size,search} = req.query
     console.log('query',size)
     
-    const {codes, ...rest} = await CodesService.search({size})
+    const {codes, ...rest} = await CodesService.search({size,search})
 
     res.send({data: codes, ...rest})
 }

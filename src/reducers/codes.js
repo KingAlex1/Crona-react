@@ -2,7 +2,7 @@ import {handleActions} from 'redux-actions'
 import {
     fetchCodesLezyStart,
     fetchCodesLezySuccess,
-    fetchCodesLezyFailure
+    fetchCodesLezyFailure, fetchCodesNewSearch
 } from "../actions/codes";
 
 const initState = {
@@ -26,6 +26,10 @@ export const codes = handleActions({
         count: action.payload.count,
         loaded: action.payload.data.length < 10
 
+    }),
+    [fetchCodesNewSearch]:(state,action)=>({
+        ...state,
+        codes:[]
     }),
     [fetchCodesLezyFailure]: (state, action) => ({
         ...state,
