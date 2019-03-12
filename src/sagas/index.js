@@ -13,7 +13,7 @@ import {
     fetchBlogByCategoryWatch
 } from "./blog";
 import {authFlow} from "./auth";
-
+import {fetchCodesSaga} from './codes'
 
 
 export default function* () {
@@ -28,7 +28,7 @@ export default function* () {
     yield fork(fetchBlogByTagsWatch)
     yield fork(fetchBlogByCategoryWatch)
     yield fork(sendMessageWatch)
-
+    yield fork(fetchCodesSaga)
 
 
 }

@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
-import { Icon } from 'semantic-ui-react'
+import {Icon} from 'semantic-ui-react'
+import List from './List'
+import Search from './Search'
+
 
 import './index.scss'
 
@@ -8,10 +11,8 @@ export class Table extends Component {
     render() {
         return (
             <div>
-                <Icon bordered name='users' />
-                <Icon bordered color='teal' name='users' />
-                <Icon bordered inverted color='black' name='users' />
-                <Icon bordered inverted color='teal' name='users' />
+                <Search/>
+                <List/>
             </div>
         )
     }

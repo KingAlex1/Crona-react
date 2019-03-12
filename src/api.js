@@ -37,6 +37,19 @@ export const clearTokenApi = () => {
     axios.defaults.headers.common['Authorization'] = undefined;
 };
 
+
+export const fetchCodesLaze = (size) => 
+    axios.get(`http://localhost:4000/table?size=${size}`)
+        .then(function (response) {
+            
+            return response;
+          
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+
 export const fetchNews = (page) =>
     axios.get(`http://localhost:4000/news?page=${page}`)
         .then(function (response) {
@@ -113,14 +126,14 @@ export const fetchPostsByCategory = ({category, currentPage}) => {
 export const updatePost = (data) => {
 
     return axios.put(`http://localhost:4000/blog/${data.hash}`, {
-        title:data.title,
-        description:data.description,
-        category:data.category,
-        date:data.time,
-        image:data.image,
-        author:data.author,
-        tags:data.tags,
-        comments:data.comments
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        date: data.time,
+        image: data.image,
+        author: data.author,
+        tags: data.tags,
+        comments: data.comments
     })
         .then(function (response) {
             return response;

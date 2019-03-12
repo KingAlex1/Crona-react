@@ -6,6 +6,7 @@ import {users} from "./users";
 import {news} from "./news";
 import {blog} from "./blog";
 import {user} from "./user";
+import {codes} from "./codes";
 
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
     users,
     news,
     blog,
-    user
+    user,
+    codes
 })
